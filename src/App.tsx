@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { useDebounce } from "use-debounce";
+// import { useFetchAlbumsQuery } from "./feature/spotify/spotify-api-slice";
+import { Albums } from "./components/Albums";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [term, setTerm] = useState("pink floyd");
+	const [value] = useDebounce(term, 1000);
+
+	return (
+		<div>
+			<input
+				type="text"
+				placeholder="enter"
+				value={term}
+				onChange={(e) => setTerm(e.target.value)}
+			/>
+			<Albums term={value} />
+		</div>
+	);
 }
 
 export default App;
