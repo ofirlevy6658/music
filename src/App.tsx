@@ -3,8 +3,7 @@ import { useDebounce } from "use-debounce";
 import { Albums } from "./pages/Albums";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "./app/hooks";
-// import {  } from "./feature/counter/search-term-slice";
-
+import { Search } from "./components/Search/Search";
 import axios from "axios";
 import "./general.scss";
 
@@ -39,6 +38,7 @@ function App() {
 	});
 	return (
 		<>
+			<Search />
 			<div className="input-container">
 				<input
 					className="search"
