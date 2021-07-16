@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Card } from "../components/Card/Card";
 import { useFetchAlbumsQuery } from "../feature/spotify/spotify-api-slice";
-
+import { Spinner } from "../components/Spinner";
 interface Props {
 	term: string;
 }
@@ -18,12 +18,12 @@ export const Albums = ({ term }: Props) => {
 	});
 	return (
 		<>
+			{isFetching && <Spinner />}
 			{!isFetching && (
 				<div style={{ display: "flex", flex: "1 1 auto", flexWrap: "wrap" }}>
 					{albumCard}
 				</div>
 			)}
-			{isFetching && <h1>spinner</h1>}
 		</>
 	);
 };
