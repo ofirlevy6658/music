@@ -1,9 +1,16 @@
-
+// WRITE WHAT YOU WANT HERE SO WE KNOW
+body{
+    background-color: #88bdbc;
+}
 .card-wrapper{
+    background-color: rgb(240, 226, 226);
+    font-family: "Courier New";
+    font-weight:lighter;
+    text-align: center;
     width: 15rem;
-    border-radius: 1rem;
-    box-shadow: 2px 2px 5px 0 #ccc;
-
+    border-radius: 0.5rem;
+    box-shadow: 15px 5px grey;
+    cursor: pointer;
     margin: 0.5rem 1rem;
     padding: 0.5rem;
 

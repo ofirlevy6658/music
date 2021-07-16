@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "../feature/counter/counter-slice";
 import { apiSlice } from "../feature/spotify/spotify-api-slice";
 export const store = configureStore({

@@ -1,5 +1,5 @@
-import React from "react";
-import { Card } from "./Card/Card";
+import React, { Fragment } from "react";
+import { Card } from "../components/Card/Card";
 import { useFetchAlbumsQuery } from "../feature/spotify/spotify-api-slice";
 
 interface Props {
@@ -10,7 +10,11 @@ export const Albums = ({ term }: Props) => {
 	const { data, isFetching } = useFetchAlbumsQuery(term);
 
 	const albumCard = data?.albums.items.map((el) => {
-		return <Card id={el.id} name={el.name} img={el.images[0].url} />;
+		return (
+			<Fragment key={el.id}>
+				<Card name={el.name} img={el.images[0].url} />
+			</Fragment>
+		);
 	});
 	return (
 		<>
@@ -19,6 +23,7 @@ export const Albums = ({ term }: Props) => {
 					{albumCard}
 				</div>
 			)}
+			{isFetching && <h1>spinner</h1>}
 		</>
 	);
 };

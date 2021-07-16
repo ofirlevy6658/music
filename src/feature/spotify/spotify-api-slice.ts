@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const token =
-	"BQCpA3h1vnBtN4bWyKkxzKew2mCNFIeFmg-EYUFp74CLo-g01vBR92uUaPbjaOUtL4zdmJutJxPGk4FQ5mg";
+const token = localStorage.token;
 
 interface Item {
 	name: string;
