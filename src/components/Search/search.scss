@@ -1,0 +1,21 @@
+.input-container {
+    display: flex;
+    .search {
+        background-color: #eee;
+        color: #999;
+        border: 1px solid #eeeeee;
+        border-radius: 0.25rem;
+        padding: 0.75rem 1rem;
+        margin: 0 auto;
+        width: 30%;
+        line-height: 1.25;
+        text-transform: capitalize;
+
+        &:focus {
+            transition: all 200ms ease-in;
+            outline: none;
+            background-color: white;
+            color: black;
+        }
+    }
+}

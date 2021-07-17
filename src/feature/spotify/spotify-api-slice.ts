@@ -16,6 +16,15 @@ interface Albums {
 	};
 }
 
+interface Tracks {
+	items: { preview_url?: string }[];
+}
+interface Album {
+	name: string;
+	label: string;
+	tracks: Tracks;
+}
+
 export const apiSlice = createApi({
 	reducerPath: "api",
 	baseQuery: fetchBaseQuery({
@@ -32,8 +41,13 @@ export const apiSlice = createApi({
 					return `/search?query=${encodeURIComponent(albumName)}&type=album`;
 				},
 			}),
+			fetchTracks: builder.query<Album, string>({
+				query(albumID) {
+					return `/albums/${albumID}`;
+				},
+			}),
 		};
 	},
 });
 
-export const { useFetchAlbumsQuery } = apiSlice;
+export const { useFetchAlbumsQuery, useFetchTracksQuery } = apiSlice;

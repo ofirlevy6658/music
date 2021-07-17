@@ -1,19 +1,12 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
-import { useDebounce } from "use-debounce";
+import React, { useEffect } from "react";
 import { Albums } from "./pages/Albums";
+import { Album } from "./pages/Album";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "./app/hooks";
 import { Search } from "./components/Search/Search";
 import axios from "axios";
 import "./general.scss";
 
 function App() {
-	const [term, setTerm] = useState("pink floyd");
-	const [value] = useDebounce(term, 1000);
-	const searchRef = useRef<HTMLInputElement>(null);
-	const term2 = useAppSelector((state) => state.search.term);
-	const dispatch = useAppDispatch();
-	console.log(term2);
 	useEffect(() => {
 		const getToken = async () => {
 			const response = await axios("https://accounts.spotify.com/api/token", {
@@ -33,29 +26,19 @@ function App() {
 		getToken();
 	}, []);
 
-	useLayoutEffect(() => {
-		searchRef.current?.focus();
-	});
+	// useLayoutEffect(() => {
+	// 	searchRef.current?.focus();
+	// });
 	return (
 		<>
-			<Search />
-			<div className="input-container">
-				<input
-					className="search"
-					type="text"
-					placeholder="enter"
-					ref={searchRef}
-					value={term}
-					onChange={(e) => setTerm(e.target.value)}
-				/>
-			</div>
 			<Router>
+				<Search />
 				<Switch>
 					<Route path="/album/:id">
-						<h1>hi</h1>
+						<Album />
 					</Route>
 					<Route path="/">
-						<Albums term={value} />
+						<Albums />
 					</Route>
 				</Switch>
 			</Router>
