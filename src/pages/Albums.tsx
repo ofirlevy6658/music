@@ -32,7 +32,7 @@ export const Albums = () => {
 					style={{
 						display: "flex",
 						flexWrap: "wrap",
-						justifyContent: "space-around",
+						flexGrow: 1,
 					}}
 				>
 					{albumCard}

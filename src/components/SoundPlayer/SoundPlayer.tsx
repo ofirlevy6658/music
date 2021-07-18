@@ -9,7 +9,6 @@ interface Props {
 export const SoundPlayer = ({ tracks }: Props) => {
 	const [playing, setPlaying] = useState<string | null>("");
 	const [trackIndex, setTrackIndex] = useState(0);
-
 	useEffect(() => {
 		if (tracks) {
 			setPlaying(tracks[0].url);
@@ -30,17 +29,27 @@ export const SoundPlayer = ({ tracks }: Props) => {
 	};
 
 	return (
-		<div className="sound-player-container">
-			{/* <div className="sound-player"> */}
-			{/* <img
-					src="https://i.scdn.co/image/ab67616d0000b273f05e5ac32fdd79d100315a20"
-					alt="album-img"
-				/>
-			</div> */}
+		<div
+			className="sound-player-container"
+			// style={{
+			// 	opacity: "0.3",
+			// 	height: "50vh",
+			// 	width: "35vw",
+			// 	margin: "0 auto",
+			// 	backgroundImage:
+			// 		"url(" +
+			// 		"https://i.scdn.co/image/ab67616d0000b273f05e5ac32fdd79d100315a20" +
+			// 		")",
+			// 	backgroundPosition: "center",
+			// 	backgroundSize: "cover",
+			// 	backgroundRepeat: "no-repeat",
+			// }}
+		>
 			<div className="media-player">
 				<div className="song-list">
 					{tracks?.map((el, i) => (
-						<p
+						<div
+							className={`song-row ${trackIndex === i ? "active" : ""}`}
 							key={i}
 							onClick={() => {
 								setPlaying(tracks[el.index].url);
@@ -48,7 +57,7 @@ export const SoundPlayer = ({ tracks }: Props) => {
 							}}
 						>
 							{el.name}
-						</p>
+						</div>
 					))}
 				</div>
 				<div className="sound-player">

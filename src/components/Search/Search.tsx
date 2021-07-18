@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { setTerm } from "../../feature/counter/search-term-slice";
+import { setTerm } from "../../feature/search-term/search-term-slice";
 import { Input } from "semantic-ui-react";
 import "./search.scss";
 
 export const Search = () => {
-	const dispatch = useAppDispatch();
 	const [query, setQuery] = useState("");
+	const dispatch = useAppDispatch();
+	const term = useAppSelector((state) => state.search.term);
 	const history = useHistory();
 	useEffect(() => {
 		const timeout = setTimeout(() => {
@@ -19,7 +20,7 @@ export const Search = () => {
 		return () => {
 			clearTimeout(timeout);
 		};
-	}, [query, dispatch]);
+	}, [query, dispatch, history]);
 
 	return (
 		<div className="input-container">
@@ -28,7 +29,7 @@ export const Search = () => {
 				icon="search"
 				type="text"
 				size="huge"
-				placeholder={query}
+				placeholder={term}
 				value={query}
 				onChange={(e) => setQuery(e.target.value)}
 			/>

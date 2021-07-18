@@ -13,7 +13,7 @@ type Track = {
 export const Album = () => {
 	const [tracks, setTracks] = useState<Track[] | undefined>();
 	let { id } = useParams<Params>();
-	const { data, isFetching } = useFetchTracksQuery(id);
+	const { data } = useFetchTracksQuery(id);
 	useEffect(() => {
 		const tracksArr = data?.tracks.items.map((el, i) => ({
 			name: el.name,
