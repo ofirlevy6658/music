@@ -1,11 +1,6 @@
-// WRITE WHAT YOU WANT HERE SO WE KNOW
-body{
-    background-color: #88bdbc;
-}
+
 .card-wrapper{
     background-color: rgb(240, 226, 226);
-    font-family: "Courier New";
-    font-weight:lighter;
     text-align: center;
     width: 15rem;
     border-radius: 0.5rem;
@@ -13,14 +8,12 @@ body{
     cursor: pointer;
     margin: 0.5rem 1rem;
     padding: 0.5rem;
-
     .card-img {
         width: 100%;
     }
     transition: transform 333ms ease-in-out;
     &:hover {
         transform: scale(1.1);
-        
     }
 
 }

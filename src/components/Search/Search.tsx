@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { setTerm } from "../../feature/counter/search-term-slice";
+import { Input } from "semantic-ui-react";
 import "./search.scss";
 
 export const Search = () => {
@@ -22,9 +23,11 @@ export const Search = () => {
 
 	return (
 		<div className="input-container">
-			<input
+			<Input
 				className="search"
+				icon="search"
 				type="text"
+				size="huge"
 				placeholder={query}
 				value={query}
 				onChange={(e) => setQuery(e.target.value)}

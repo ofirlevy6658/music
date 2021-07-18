@@ -28,7 +28,13 @@ export const Albums = () => {
 		<>
 			{isFetching && <Spinner />}
 			{!isFetching && (
-				<div style={{ display: "flex", flex: "1 1 auto", flexWrap: "wrap" }}>
+				<div
+					style={{
+						display: "flex",
+						flexWrap: "wrap",
+						justifyContent: "space-around",
+					}}
+				>
 					{albumCard}
 				</div>
 			)}

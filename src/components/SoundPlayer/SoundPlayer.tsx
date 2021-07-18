@@ -1,17 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./soundplayer.scss";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/src/styles.scss";
-import ReactPlayer from "react-player";
-interface Props {}
+interface Props {
+	tracks?: { url: string | null; name: string; index: number }[];
+}
 
-export const SoundPlayer = (props: Props) => {
+export const SoundPlayer = ({ tracks }: Props) => {
+	const [playing, setPlaying] = useState<string | null>("");
+	const [trackIndex, setTrackIndex] = useState(0);
+
+	useEffect(() => {
+		if (tracks) {
+			setPlaying(tracks[0].url);
+		}
+	}, [tracks]);
+
 	const next = () => {
-		console.log("next");
+		if (!tracks) return;
+		if (tracks.length <= trackIndex + 1) return;
+		setPlaying(tracks[trackIndex + 1].url);
+		setTrackIndex(trackIndex + 1);
 	};
 	const prev = () => {
-		console.log("rev");
+		if (!tracks) return;
+		if (trackIndex - 1 <= 0) return;
+		setPlaying(tracks[trackIndex - 1].url);
+		setTrackIndex(trackIndex - 1);
 	};
+
 	return (
 		<div className="sound-player-container">
 			{/* <div className="sound-player"> */}
@@ -22,8 +39,17 @@ export const SoundPlayer = (props: Props) => {
 			</div> */}
 			<div className="media-player">
 				<div className="song-list">
-					s s<h1>s</h1>
-					<h1>s</h1>
+					{tracks?.map((el, i) => (
+						<p
+							key={i}
+							onClick={() => {
+								setPlaying(tracks[el.index].url);
+								setTrackIndex(el.index);
+							}}
+						>
+							{el.name}
+						</p>
+					))}
 				</div>
 				<div className="sound-player">
 					<AudioPlayer
@@ -31,7 +57,7 @@ export const SoundPlayer = (props: Props) => {
 						showJumpControls={false}
 						onClickNext={next}
 						onClickPrevious={prev}
-						src="https://p.scdn.co/mp3-preview/a38c14bfaea20ed78a9823dff74740fcd8f89dc4?cid=d6fa2687db"
+						src={playing ? playing : undefined}
 					/>
 				</div>
 			</div>

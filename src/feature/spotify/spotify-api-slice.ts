@@ -17,7 +17,7 @@ interface Albums {
 }
 
 interface Tracks {
-	items: { preview_url?: string }[];
+	items: { preview_url: string; name: string }[];
 }
 interface Album {
 	name: string;

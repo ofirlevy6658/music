@@ -1,11 +1,11 @@
 .sound-player-container{
-    $rhap_background-color: black !default;
-    border: solid 3px black;
     width: 100vw;
-    height: 80vh;
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size:1.5rem;
+    // line-height:200%;
     // .sound-player{
     //     border: solid orange 3px;
     //     height: 70%;
@@ -18,21 +18,25 @@
     //     }
     // }
     .media-player{
-        border: solid yellow 3px;
-        height: 50%;
+        height: 70%;
         display: flex;
         flex-direction: column;
-        justify-content:start;
+        justify-content:space-between ;
+        border:solid 3px yellow;
         
     }
     .song-list{
         border: solid black 3px;
+        p{
+            cursor: pointer;
+        }
     }
     .sound-player{
-        width: 25%;
+        width: 100%;
         border: green solid 3px;
         min-width: 300px;
     }
+
     // @media only screen and (max-width: 1300px) {
     //     .sound-player{
     //         width: 30%;
