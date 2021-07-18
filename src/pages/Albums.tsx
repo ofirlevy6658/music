@@ -12,6 +12,7 @@ export const Albums = () => {
 	const onClick = (id: string) => {
 		history.push(`/album/${id}`);
 	};
+
 	const albumCard = data?.albums.items.map((el) => {
 		return (
 			<Fragment key={el.id}>

@@ -26,8 +26,9 @@ function App() {
 				method: "POST",
 			});
 			localStorage.setItem("token", response.data.access_token);
+			window.location.reload();
 		};
-		getToken();
+		if (!localStorage.token) getToken();
 	}, []);
 
 	// useLayoutEffect(() => {
