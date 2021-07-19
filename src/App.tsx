@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Albums } from "./pages/Albums";
@@ -11,6 +11,7 @@ import "./reset.scss";
 import "./app.scss";
 
 function App() {
+	const [token, setToken] = useState("");
 	useEffect(() => {
 		const getToken = async () => {
 			const response = await axios("https://accounts.spotify.com/api/token", {
@@ -25,23 +26,18 @@ function App() {
 				data: "grant_type=client_credentials",
 				method: "POST",
 			});
+			setToken(response.data.access_token);
 			localStorage.setItem("token", response.data.access_token);
-			window.location.reload();
 		};
-		if (!localStorage.token) getToken();
-	}, []);
+		getToken();
+	}, [token]);
 
-	// useLayoutEffect(() => {
-	// 	searchRef.current?.focus();
-	// });
 	return (
 		<>
 			<Router>
 				<Search />
 				<Switch>
-					<Route path="/album/:id">
-						<Album />
-					</Route>
+					<Route path="/album/:id">{<Album />}</Route>
 					<Route path="/tracks">
 						<Tracks />
 					</Route>
