@@ -41,9 +41,7 @@ function App() {
 					<Route path="/tracks">
 						<Tracks />
 					</Route>
-					<Route path="/">
-						<Albums />
-					</Route>
+					<Route path="/">{token && <Albums />}</Route>
 				</Switch>
 			</Router>
 		</>
