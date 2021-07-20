@@ -10,6 +10,7 @@ type Track = {
 	url: string | null;
 	index: number;
 };
+
 export const Album = () => {
 	const [tracks, setTracks] = useState<Track[] | undefined>();
 	let { id } = useParams<Params>();
