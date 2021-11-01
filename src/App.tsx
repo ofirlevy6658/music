@@ -30,7 +30,7 @@ function App() {
 			localStorage.setItem("token", response.data.access_token);
 		};
 		getToken();
-	}, [token]);
+	}, []);
 
 	return (
 		<>
