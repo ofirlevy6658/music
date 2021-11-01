@@ -1,13 +1,13 @@
 .input-container {
-    display: flex;
-    .search {
-        margin: 0 auto;
-        // width: 30%;
-        &:focus {
-            transition: all 200ms ease-in;
-            outline: none;
-            background-color: white;
-            color: black;
-        }
-    }
+	margin-top: 25px;
+	display: flex;
+	.search {
+		margin: 0 auto;
+		&:focus {
+			transition: all 200ms ease-in;
+			outline: none;
+			background-color: white;
+			color: black;
+		}
+	}
 }

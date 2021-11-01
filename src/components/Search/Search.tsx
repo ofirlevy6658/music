@@ -16,7 +16,7 @@ export const Search = () => {
 				dispatch(setTerm(query));
 				if (history.location.pathname !== "/") history.push("/");
 			}
-		}, 1500);
+		}, 600);
 		return () => {
 			clearTimeout(timeout);
 		};

@@ -7,8 +7,8 @@ import { Tracks } from "./pages/Tracks";
 import { Search } from "./components/Search/Search";
 
 import "semantic-ui-css/semantic.min.css";
-import "./reset.scss";
 import "./app.scss";
+import "./reset.scss";
 
 function App() {
 	const [token, setToken] = useState("");
