@@ -11,7 +11,8 @@ import "./app.scss";
 import "./reset.scss";
 
 function App() {
-	const [token, setToken] = useState("");
+	// const [token, setToken] = useState("");
+	const [isToken, setIsToken] = useState(false);
 	useEffect(() => {
 		const getToken = async () => {
 			const response = await axios("https://accounts.spotify.com/api/token", {
@@ -26,22 +27,29 @@ function App() {
 				data: "grant_type=client_credentials",
 				method: "POST",
 			});
-			setToken(response.data.access_token);
 			localStorage.setItem("token", response.data.access_token);
+			setIsToken(true);
 		};
-		getToken();
-	}, []);
+		if (!isToken) getToken();
+		console.log("test");
+	}, [isToken]);
 
 	return (
 		<>
 			<Router>
 				<Search />
 				<Switch>
-					<Route path="/album/:id">{<Album />}</Route>
+					<Route path="/album/:id">
+						<Album />
+					</Route>
 					<Route path="/tracks">
 						<Tracks />
 					</Route>
-					<Route path="/">{token && <Albums />}</Route>
+					{isToken && (
+						<Route path="/">
+							<Albums />
+						</Route>
+					)}
 				</Switch>
 			</Router>
 		</>
