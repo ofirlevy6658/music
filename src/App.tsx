@@ -31,7 +31,6 @@ function App() {
 			setIsToken(true);
 		};
 		if (!isToken) getToken();
-		console.log("test");
 	}, [isToken]);
 
 	return (
